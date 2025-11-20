@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BannerComponent } from "./banner/banner.component";
 import { FormNovaTransacaoComponent } from "./form-nova-transacao/form-nova-transacao.component";
 import { Transacao } from './model/transacao';
@@ -11,11 +11,19 @@ import { Transacao } from './model/transacao';
 })
 export class AppComponent {
   title = 'anybank';
+  // dados mutaveis e reativos!
+  transacoes = signal<Transacao[]>([]);
 
   // função
-  processarTransacao(transacao : Transacao) {
-    console.log('Transação criada!');
-    console.log(transacao);
+  processarTransacao(novaTransacao : Transacao) {
+    console.log('Transação adicionados "signal"!');
+    console.log(novaTransacao);
+
+    //this.transacoes.set()
+    this.transacoes.update((listaAtualTransacoes) => [novaTransacao, ...listaAtualTransacoes ])
+
+    console.log('Atualizado "this.transacoes"  "signal"!');
+    console.log(this.transacoes());
   }
 
 }
