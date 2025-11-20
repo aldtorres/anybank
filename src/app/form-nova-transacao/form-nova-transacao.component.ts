@@ -10,10 +10,15 @@ import { FormsModule } from '@angular/forms';
 export class FormNovaTransacaoComponent {
 
     valorTransacao ="";
+    tipoTransacao ="";
 
     //
     aoSubmeter(){
       console.log('submetido!');
       console.log(this.valorTransacao);
+      console.log(this.tipoTransacao);
+
+      this.valorTransacao ="";
+      this.tipoTransacao ="";
     }
 }

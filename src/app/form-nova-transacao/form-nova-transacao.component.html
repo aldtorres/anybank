@@ -5,7 +5,7 @@
             <label class="campo-grupo">
                 Transação
                 <div class="select-wrapper">
-                    <select name="tipo-transacao" class="campo select-tipo-transacao" required>
+                    <select name="tipo-transacao" [(ngModel)]="tipoTransacao" class="campo select-tipo-transacao" required>
                         <option value="" selected disabled>Selecione o tipo de transação</option>
                         <option value="deposito" >Depósito</option>
                         <option value="saque" >Saque</option>
