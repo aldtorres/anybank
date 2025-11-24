@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
 import { Transacao } from '../../model/transacao';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-transacao',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, DatePipe],
   templateUrl: './transacao.component.html',
   styleUrl: './transacao.component.css'
 })

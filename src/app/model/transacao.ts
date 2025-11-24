@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 export class Transacao {
     
     readonly id = nanoid();
+    readonly data = new Date();
     
     constructor(
         public readonly tipo: TipoTransacao, 
