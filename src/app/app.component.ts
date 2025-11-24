@@ -1,7 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { BannerComponent } from "./banner/banner.component";
 import { FormNovaTransacaoComponent } from "./form-nova-transacao/form-nova-transacao.component";
-import { Transacao } from './model/transacao';
+import { TipoTransacao, Transacao } from './model/transacao';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,12 @@ export class AppComponent {
   //computed é um signal a partir de outro signal [SIGNAL DERIVADO OU SIGNAL COMPUTADO]
   saldoAtual = computed(() => {
     return this.transacoes().reduce((acumulador, transacaoAtual) => {
-      return acumulador + transacaoAtual.valor;
+      
+      if(transacaoAtual.tipo == TipoTransacao.DEPOSITO){
+        return acumulador + transacaoAtual.valor;
+      }
+      return acumulador - transacaoAtual.valor;
+
     }, 0)
   });
 
