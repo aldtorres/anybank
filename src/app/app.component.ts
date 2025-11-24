@@ -33,7 +33,7 @@ export class AppComponent {
     console.log(novaTransacao);
 
     if(novaTransacao.tipo == TipoTransacao.SAQUE && novaTransacao.valor > this.saldoAtual()){
-      console.log('SALDO INSUFICIENTE!!!')
+      alert('SALDO INSUFICIENTE!!!')
       return;
     }
 
