@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { BannerComponent } from "./banner/banner.component";
 import { FormNovaTransacaoComponent } from "./form-nova-transacao/form-nova-transacao.component";
 import { Transacao } from './model/transacao';
@@ -13,6 +13,14 @@ export class AppComponent {
   title = 'anybank';
   // dados mutaveis e reativos!
   transacoes = signal<Transacao[]>([]);
+
+  //acessar dados de  origem signal => computed é uma dependencia de um signal
+  //computed é um signal a partir de outro signal [SIGNAL DERIVADO OU SIGNAL COMPUTADO]
+  saldoAtual = computed(() => {
+    return this.transacoes().reduce((acumulador, transacaoAtual) => {
+      return acumulador + transacaoAtual.valor;
+    }, 0)
+  });
 
   // função
   processarTransacao(novaTransacao : Transacao) {
