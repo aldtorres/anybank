@@ -19,10 +19,16 @@ export class AppComponent {
   saldoAtual = computed(() => {
     return this.transacoes().reduce((acumulador, transacaoAtual) => {
       
-      if(transacaoAtual.tipo == TipoTransacao.DEPOSITO){
-        return acumulador + transacaoAtual.valor;
+      switch(transacaoAtual.tipo){
+        case TipoTransacao.DEPOSITO:
+          return acumulador + transacaoAtual.valor;  
+        case TipoTransacao.SAQUE:
+          return acumulador - transacaoAtual.valor;  
+        default:
+          throw new Error(TipoTransacao.SAQUE || ' - Tipo de transacao não identificado.')
       }
-      return acumulador - transacaoAtual.valor;
+
+      
 
     }, 0)
   });
