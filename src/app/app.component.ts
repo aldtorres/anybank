@@ -32,6 +32,11 @@ export class AppComponent {
     console.log('Transação adicionados "signal"!');
     console.log(novaTransacao);
 
+    if(novaTransacao.tipo == TipoTransacao.SAQUE && novaTransacao.valor > this.saldoAtual()){
+      console.log('SALDO INSUFICIENTE!!!')
+      return;
+    }
+
     //this.transacoes.set()
     this.transacoes.update((listaAtualTransacoes) => [novaTransacao, ...listaAtualTransacoes ])
 
